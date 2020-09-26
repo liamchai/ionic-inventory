@@ -18,4 +18,19 @@ export class DatabaseService {
 
     this.db.sync(this.remote, options);
   }
+
+  userSeeder() {
+    this.db
+      .bulkDocs([
+        { _id: '1337', username: 'h4ck3r' },
+        { _id: '1234', username: 'Guest' },
+        { _id: '3306', username: 'Owner' },
+      ])
+      .then((result) => {
+        console.log(result);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
 }
